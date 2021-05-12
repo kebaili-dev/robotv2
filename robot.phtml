@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robot</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1>Robot</h1>
+    
+    <main class="container">
+        <section>
+            <h2>Paramétrage du robot</h2>
+            <form>
+                <fieldset>
+                    <legend>Gestion du nom</legend>
+                    <label>
+                        <input name="robot_settings" type="radio" value="1" checked> 
+                        Utiliser le nom du robot qui a été saisi
+                    </label>
+                    <label>
+                        <input name="robot_settings" type="radio" value="2"> 
+                        Générer le nom du robot automatiquement
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Nom choisi manuellement</legend>
+                    <p>Si l'option "Utiliser le nom du robot qui a été saisi" a été choisie</p>
+                    <div class="form-group">
+                        <label for="robotname">Nom du robot</label>
+                        <input id="robotname" name="robotname" type="text">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Nom choisi aléatoirement</legend>
+                    <p>Si l'option "Générer le nom du robot automatiquement" a été choisie</p>
+                    <div class="form-group">
+                        <label for="total-letters">Nombre de lettres</label>
+                        <input id="total-letters" name="total_letters" type="number" value="2" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="total-numbers">Nombre de nombres</label>
+                        <input id="total-numbers" name="total_numbers" type="number" value="4" min="0">
+                    </div>
+                </fieldset>
+                <button class="button button-primary">Enregistrer</button>
+            </form>
+        </section>
+        
+        <hr>
+        
+        <!-- Affichage -->
+        <!-- Si le nom existe on affiche toutes les informations -->
+        <?php if (isset($robotName)): ?>
+            <section>
+                <p>Salut humain, je suis <?= $robotName ?></p>
+                <p>Nous sommes le <?= $date ?>, il est <?= $time ?></p>
+                <p>
+                    J'ai choisi le nombre <?= $randomNumber ?>.
+                    <?php if (isEven($randomNumber)): ?>
+                        C'est un nombre pair.
+                    <?php else: ?>
+                        C'est un nombre impair.
+                    <?php endif ?>
+                </p>
+                <p>Mon nom à l'envers s'écrit <?= $reverseRobotName ?>. Ah. Ah. Ah.</p>
+                <p>
+                    <?php if ($random < 3): ?>
+                        Vous voulez un café ?
+                    <?php else: ?>
+                        Extermination ! Extermination !
+                    <?php endif ?>
+                </p>
+            </section>
+        <?php endif ?>
+    </main>
+</body>
+</html>
